@@ -3,10 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import WelcomePage from './pages/WelcomePage';
-import OnBoardingPage from './pages/OnBoardingPage';
-import EmployeePage from './pages/EmployeePage';
-import ManagerPage from './pages/ManagerPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,14 +26,7 @@ function App() {
         element={
           <>
             <PageTitle title="Home | Digital Systematic" />
-            <WelcomePage />
-            <br />
-            <OnBoardingPage />
-            <br />
-            <EmployeePage />
-            <br />
-            <ManagerPage />
-            <br />
+            <HomePage />
           </>
         }
       />
