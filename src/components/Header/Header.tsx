@@ -9,6 +9,12 @@ const Header = (props: any) => {
         props.toggleLogin();
     }, [isOpen])
 
+    const handleLogout = () => {
+        localStorage.setItem("authToken", "");
+        localStorage.setItem("userData", "");
+        props.toggleLogin();
+    }
+
     return (
         <>
             <SigninModal isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -31,6 +37,7 @@ const Header = (props: any) => {
                                     </div> :
                                     <div
                                         className="text-gray-700 hover:text-orange-500 hover:cursor-pointer"
+                                        onClick={handleLogout}
                                     >
                                         {props.userData?.managerName}
                                     </div>

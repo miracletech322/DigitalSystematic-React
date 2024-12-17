@@ -18,6 +18,7 @@ const DropdownUser = () => {
 
   const handleLogout = () => {
     localStorage.setItem("authToken", "");
+    localStorage.setItem("userData", "");
     navigate("/admin")
   }
 

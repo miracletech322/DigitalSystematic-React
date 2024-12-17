@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 const HomePage = () => {
     const [isLogined, setIsLogined] = useState(false);
     const [userData, setUserData] = useState({})
+    const [userList, setUserList] = useState([])
 
     const loadUserData = () => {
         const userObjString = localStorage.getItem("userData");
@@ -19,6 +20,21 @@ const HomePage = () => {
         } else {
             setIsLogined(true);
             setUserData(JSON.parse(userObjString))
+            loadUserList();
+        }
+    }
+
+    const loadUserList = async () => {
+        try {
+            const res = await request({
+                url: 'recommend/users',
+                method: 'POST'
+            });
+            if (res.data?.status == 'success') {
+                setUserList(res.data?.users)
+            }
+        } catch (e) {
+            toast.error("Request Error");
         }
     }
 
@@ -51,12 +67,12 @@ const HomePage = () => {
                 <OnBoardingPage />
                 {
                     isLogined && userData?.role == 'User' ?
-                        <EmployeePage handleRecommend={handleRecommend} /> :
+                        <EmployeePage handleRecommend={handleRecommend} userData={userData} /> :
                         <></>
                 }
                 {
                     isLogined && userData?.role == 'Manager' ?
-                        <ManagerPage /> :
+                        <ManagerPage slides={userList} /> :
                         <></>
                 }
                 <ThanksPage />
