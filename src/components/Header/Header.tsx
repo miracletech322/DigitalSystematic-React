@@ -1,6 +1,17 @@
-const Header = () => {
+import { useEffect, useState } from "react";
+import SigninModal from "../SigninModal";
+
+const Header = (props: any) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        props.toggleLogin();
+    }, [isOpen])
+
     return (
         <>
+            <SigninModal isOpen={isOpen} setIsOpen={setIsOpen} />
             {/* Header Section */}
             <header className="bg-white shadow-md">
                 <nav className="container mx-auto flex items-center justify-between p-4">
@@ -10,9 +21,20 @@ const Header = () => {
                     {/* Navigation Links */}
                     <ul className="flex space-x-6">
                         <li>
-                            <a href="#" className="text-gray-700 hover:text-orange-500">
-                                SignIn
-                            </a>
+                            {
+                                !props.isLogined ?
+                                    <div
+                                        className="text-gray-700 hover:text-orange-500 hover:cursor-pointer"
+                                        onClick={() => setIsOpen(true)}
+                                    >
+                                        Login
+                                    </div> :
+                                    <div
+                                        className="text-gray-700 hover:text-orange-500 hover:cursor-pointer"
+                                    >
+                                        {props.userData?.managerName}
+                                    </div>
+                            }
                         </li>
                     </ul>
                 </nav>

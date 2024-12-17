@@ -1,4 +1,4 @@
-const EmployeePage = () => {
+const EmployeePage = (props: any) => {
     return (
         <>
             {/* Main Content Section */}
@@ -14,11 +14,24 @@ const EmployeePage = () => {
                         Petro Bakumenko
                     </h1>
                     <div className="flex flex-row items-center justify-center space-x-4">
-                        <div className="w-18 h-18 md:w-24 md:h-24 bg-green-500 rounded-full"></div>
-                        <div className="w-18 h-18 md:w-24 md:h-24 bg-yellow-500 rounded-full"></div>
-                        <div className="w-18 h-18 md:w-24 md:h-24 bg-orange-500 rounded-full"></div>
-                    </div>
+                        <div
+                            className="w-18 h-18 md:w-24 md:h-24 bg-green-500 rounded-full hover:cursor-pointer"
+                            onClick={() => props.handleRecommend(1)}
+                        >
+                        </div>
 
+                        <div
+                            className="w-18 h-18 md:w-24 md:h-24 bg-yellow-500 rounded-full hover:cursor-pointer"
+                            onClick={() => props.handleRecommend(2)}
+                        >
+                        </div>
+
+                        <div
+                            className="w-18 h-18 md:w-24 md:h-24 bg-orange-500 rounded-full hover:cursor-pointer"
+                            onClick={() => props.handleRecommend(3)}
+                        >
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
