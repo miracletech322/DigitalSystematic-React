@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import TreeView from '../../components/TreeView';
 
 const Dashboard = () => {
-
     const [isActive, setIsActive] = useState(true);
     const [treeData, setTreeData] = useState([]);
 
@@ -18,6 +17,7 @@ const Dashboard = () => {
                 url: 'import/dashboard',
                 method: 'POST',
             });
+
             setTreeData(res.data.users)
         } catch (e) {
             toast.error("Request Error");

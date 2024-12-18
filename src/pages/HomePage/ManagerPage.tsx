@@ -33,20 +33,22 @@ const ManagerPage = (props: any) => {
                         <div className="bg-white text-black px-12 py-16 md:px-10 md:py-12 rounded-lg shadow-lg text-center max-w-4xl w-full mx-4">
                             <h1 className="text-xl black md:text-2xl mb-4">{slide.managerName}</h1>
                             <div className="flex flex-row items-center justify-center space-x-4">
+
                                 <div
-                                    className={`w-18 h-18 md:w-24 md:h-24 bg-green-500 rounded-full`}
+                                    className={`w-18 h-18 md:w-24 md:h-24 bg-green-500 rounded-full hover:cursor-pointer ${slide.recommends.length > 0 && slide.recommends[0]?.status == 1 ? "border-4 border-blue-500" : ""}`}
                                 >
                                 </div>
 
                                 <div
-                                    className={`w-18 h-18 md:w-24 md:h-24 bg-yellow-500 rounded-full`}
+                                    className={`w-18 h-18 md:w-24 md:h-24 bg-yellow-500 rounded-full hover:cursor-pointer ${slide.recommends.length > 0 && slide.recommends[0]?.status == 2 ? "border-4 border-blue-500" : ""}`}
                                 >
                                 </div>
 
                                 <div
-                                    className={`w-18 h-18 md:w-24 md:h-24 bg-orange-500 rounded-full`}
+                                    className={`w-18 h-18 md:w-24 md:h-24 bg-orange-500 rounded-full hover:cursor-pointer ${slide.recommends.length > 0 && slide.recommends[0]?.status == 3 ? "border-4 border-blue-500" : ""}`}
                                 >
                                 </div>
+
                             </div>
 
                         </div>
