@@ -1,8 +1,29 @@
-const OnBoardingPage = () => {
+import request from "../../axios";
+
+const OnBoardingPage = (props: any) => {
+
+    const handleUpdateStatus = async () => {
+        try {
+            await request({
+                url: 'recommend/update-status',
+                method: 'POST',
+            });
+
+            const userObjString = localStorage.getItem("userData");
+            if (userObjString != null && userObjString != '') {
+                const userObj = JSON.parse(userObjString);
+                userObj.readStatus = 1;
+                localStorage.setItem("userData", JSON.stringify(userObj))
+            }
+            props.setCurrentPage("risk1-page");
+        } catch (err) {
+        }
+    }
+
     return (
         <>
             {/* Main Content Section */}
-            <div className="flex flex-col items-center justify-center py-16 px-4">
+            <div className="animate-scale-fade-in flex flex-col items-center justify-center py-16 px-4">
                 {/* Title Above the Orange Box */}
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-700 mb-8 text-center">
                     Onboarding
@@ -28,6 +49,14 @@ const OnBoardingPage = () => {
                         <br />
                         🤝
                     </h1>
+                    <div className="flex justify-end">
+                        <button
+                            className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
+                            onClick={handleUpdateStatus}
+                        >
+                            Next
+                        </button>
+                    </div>
                 </div>
             </div>
         </>

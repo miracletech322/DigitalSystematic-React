@@ -1,5 +1,10 @@
 
-const WelcomePage = () => {
+const WelcomePage = (props: any) => {
+
+    const handleNextClicked = () => {
+        props.setCurrentPage("onboarding-page");
+    }
+
     return (
         <>
             {/* Main Content Section */}
@@ -22,6 +27,15 @@ const WelcomePage = () => {
                         <br />
                         Focus on both recognizing positive behaviours of your peers and spot early signals of not feeling well in time-instead of acting when it's too late...
                     </h1>
+
+                    <div className="flex justify-end">
+                        <button
+                            className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
+                            onClick={handleNextClicked}
+                        >
+                            Next
+                        </button>
+                    </div>
                 </div>
             </div>
         </>

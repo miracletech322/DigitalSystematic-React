@@ -21,7 +21,16 @@ const EmployeePage = (props: any) => {
 
     const updateRecommend = (status: Number) => {
         props.handleRecommend(status)
-        setTimeout(loadRecommend, 500)
+        setTimeout(() => {
+            loadRecommend()
+            setTimeout(() => {
+                if (props.userData.role == 'Manager') {
+                    props.setCurrentPage("manager-page")
+                } else {
+                    props.setCurrentPage("thanks-page")
+                }
+            }, 1000);
+        }, 500)
     }
 
     useEffect(() => {
@@ -31,7 +40,7 @@ const EmployeePage = (props: any) => {
     return (
         <>
             {/* Main Content Section */}
-            <div className="flex flex-col items-center justify-center py-16 px-4">
+            <div className="animate-scale-fade-in flex flex-col items-center justify-center py-16 px-4">
                 {/* Title Above the Orange Box */}
                 <div className="text-xl md:text-2xl bg-orange-500 text-white px-12 py-4 md:px-12 md:py-4 rounded-lg shadow-lg text-center mx-4">
                     Evaluate<br />Yourself

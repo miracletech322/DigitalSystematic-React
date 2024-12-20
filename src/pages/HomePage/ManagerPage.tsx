@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ManagerPage = (props: any) => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % props.slides.length);
-    };
+    // const nextSlide = () => {
+    //     setCurrentSlide((prev) => (prev + 1) % props.slides.length);
+    // };
 
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + props.slides.length) % props.slides.length);
-    };
+    // const prevSlide = () => {
+    //     setCurrentSlide((prev) => (prev - 1 + props.slides.length) % props.slides.length);
+    // };
 
     const findMostFrequen = (arr: any) => {
         const frequency: any = {};
@@ -28,8 +28,16 @@ const ManagerPage = (props: any) => {
         return mostFrequent;
     }
 
+    useEffect(() => {
+        if (currentSlide + 1 == props.slides.length) {
+            setTimeout(() => {
+                props.setCurrentPage("thanks-page")
+            }, 1000);
+        }
+    }, [currentSlide])
+
     return (
-        <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
+        <div className="animate-scale-fade-in relative w-full max-w-4xl mx-auto overflow-hidden">
             {/* Slides Container */}
             <div
                 className="flex transition-transform duration-500"

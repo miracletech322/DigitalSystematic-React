@@ -261,6 +261,37 @@ module.exports = {
         'spin-1.5': 'spin 1.5s linear infinite',
         'spin-2': 'spin 2s linear infinite',
         'spin-3': 'spin 3s linear infinite',
+        'bounce-once': 'bounceOnce 1s ease-out',
+        'scale-fade-in': 'scaleFadeIn 0.8s ease-out',
+      },
+      keyframes: {
+        scaleFadeIn: {
+          '0%': {
+            transform: 'scale(0.8)', // Start slightly smaller
+            opacity: '0', // Fully transparent
+          },
+          '100%': {
+            transform: 'scale(1)', // End at normal size
+            opacity: '1', // Fully visible
+          },
+        },
+        bounceOnce: {
+          '0%': {
+            transform: 'translateY(0)',
+          },
+          '30%': {
+            transform: 'translateY(-15px)', // First upward movement
+          },
+          '50%': {
+            transform: 'translateY(0)', // Return to original position
+          },
+          '70%': {
+            transform: 'translateY(-8px)', // Smaller second bounce
+          },
+          '100%': {
+            transform: 'translateY(0)', // Settle back to original position
+          },
+        },
       },
     },
   },
