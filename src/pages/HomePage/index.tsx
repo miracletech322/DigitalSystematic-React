@@ -10,6 +10,8 @@ import LoginPage from "./LoginPage";
 import RiskAssessment1 from "./RiskAssessment1";
 import RiskAssessment2 from "./RiskAssessment2";
 import RiskAssessment3 from "./RiskAssessment3";
+import EmployeeTrendsPage from "./EmployeeTrendsPage";
+import ManagerTrendsPage from "./ManagerTrendsPage";
 
 const HomePage = () => {
     const [isLogined, setIsLogined] = useState(false);
@@ -112,12 +114,13 @@ const HomePage = () => {
                 }
 
                 {
-                    isLogined && currentPage == "employee-trends-page" ? <>Employee Trends</> : null
+                    isLogined && currentPage == "employee-trends-page" ? <EmployeeTrendsPage userData={userData} setCurrentPage={setCurrentPage} /> : null
                 }
 
                 {
-                    isLogined && currentPage == "manager-trends-page" ? <>Manager Trends</> : null
+                    isLogined && currentPage == "manager-trends-page" ? <ManagerTrendsPage userData={userData} setCurrentPage={setCurrentPage} /> : null
                 }
+
             </div>
         </>
     )
